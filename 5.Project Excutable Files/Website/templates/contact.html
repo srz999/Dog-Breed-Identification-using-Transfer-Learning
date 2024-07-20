@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+        </script>
+    <script>
+        $(function () {
+            $("header").load("{{url_for('header')}}");
+        });
+    </script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            color: rgb(0, 0, 0);
+            font-size: xx-large;
+
+        }
+        .container{
+            display: flex;
+            width: 100vw;
+        }
+        .info{
+            width: 50%;
+            
+        }
+        .form{
+            width: 50%;
+        }
+        .form input{
+            margin: 15px;
+            margin-left: 0px;
+        }
+        .form textarea{
+            margin: 20px;
+            margin-left: 0px;
+        }
+        #submit_btn{
+            background-color: rgb(163, 153, 229);
+            width: 200px;
+            height: 90px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header></header>
+    <h1>Contact Us</h1>
+    <div class="container">
+        <div class="info">
+
+            <div class="location">
+                <h3>Location</h3>
+                <p>2675 Clover Vly Rd NW, New Albany, OH 43031, United States</p>
+            </div>
+
+            <div class="email">
+                <h3>Email</h3>
+                <p>nik27042k1@gmail.com@gmail.com</p>
+            </div>
+
+            <div class="call">
+                <h3>Call:</h3>
+                <p>+91 9988776655</p>
+            </div>
+        </div>
+        <div class="form">
+            <form action="">
+                <input type="text" placeholder="Your Name"> <br>
+                <input type="email" placeholder="Your Email"> <br>
+                <input type="text" placeholder="Subject"> <br>
+                <textarea name="" id="" cols="30" rows="10"></textarea> <br>
+                <button type="submit" id="submit_btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

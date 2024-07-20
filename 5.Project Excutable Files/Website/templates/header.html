@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="header_style.css"> -->
+    <style>
+        header {
+            background-color: rgb(250, 218, 166);
+            width: 100vw;
+            margin: 0px;
+            margin-bottom: 10px;
+
+        }
+
+        .header_ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            font-family: 'CoFo Sans', sans-serif !important;
+            font-weight: bold !important;
+            font-size: xx-large;
+        }
+
+        .header_ul li {
+            margin: 10px;
+            margin-top: 10px;
+            font-size:xx-large;
+        }
+
+        .header_ul a {
+            text-decoration: none;
+            color: rgb(15, 3, 3);
+        }
+
+        .header_ul a:hover {
+            color: #fffffb;
+        }
+
+        body {
+            /* background-image: url('../static/adorable-dog-breeds-group-shot-7dd1igw7d22v4x3y.jpg'); */
+            /* Replace 'path/to/your/image.jpg' with the path to your image */
+            background-size: cover;
+            /* This property ensures that the background image covers the entire viewport */
+
+            /* This property ensures that the background image is not repeated */
+        }
+
+        .imageFit {
+            display: flex;
+            height: 40px;
+            align-items: center;
+            max-width: 100%;
+            overflow: hidden;
+
+        }
+
+        .imagescale {
+            width: 30px;
+            border-radius: 50%;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="imageFit">
+            <div>
+                <img class="imagescale" src="../static/ezgif-5-fd4a6576ec.png" alt="">
+            </div>
+            <div>
+                <ul class="header_ul">
+                    <li><a href="{{url_for('index')}}">Home</a></li>
+                    <li><a href="{{url_for('about')}}">About</a></li>
+                    <li><a href="{{url_for('contact')}}">Contact</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </header>
+</body>
+
+</html>

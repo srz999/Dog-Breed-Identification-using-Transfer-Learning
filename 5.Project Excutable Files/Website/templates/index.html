@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <style>
+        * {
+            /* background-color: black; */
+            color: rgb(0, 0, 0);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            
+
+
+        }
+
+        .form_div {
+            
+            width: 100vw;
+            /* border: 1px solid red; */
+            height: 50vh;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size:xx-large;
+        }
+
+        #submit_btn {
+            font-family :Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: larger;
+            color: rgb(0, 0, 0);
+            background-color: rgb(227, 187, 85);
+            width: 10vw;
+            height: 8vh;
+            border-radius: 10px;
+            border: 1px solid rgb(14, 13, 13);
+        }
+
+        .submit_btn_div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 10px;
+            font-size: larger;
+        }
+        #selectedBanner{
+            display: flex;
+            justify-content: center;
+            margin: 0;
+            margin-top: 20px;
+            
+        }
+        .imgg{
+            max-width: 100%; 
+            overflow-x: hidden;
+           
+        }
+        .imgg1{
+            width: 100%; /* Ensures the image doesn't exceed its container width */
+            height: 400px; /* Maintains aspect ratio */
+            display: block; /* Removes any default inline layout */
+            margin: 0 auto; 
+        }
+        .imgg2{
+            max-width: 100%; 
+            overflow-x: hidden;
+           
+        }
+        .imgg3{
+            width: 100%; /* Ensures the image doesn't exceed its container width */
+            height: 400px; /* Maintains aspect ratio */
+            display: block; /* Removes any default inline layout */
+            margin: 0 auto; 
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"
+        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous">
+    </script>
+    <script>
+        $(function () {
+            $("header").load("{{url_for('header')}}");
+        });
+    </script>
+</head>
+
+<body>
+    <!-- <h1>Hello how are you</h1> -->
+    <header></header>
+    <div class="imgg">
+    <img  class="imgg1" src="../static/hound.jpg" alt="" >
+
+    </div>
+
+    <h1 style="text-align:center;">Prediction Form Of The Dog Breed To Identify </h1>
+    <div id="selectedBanner"></div>
+    <div class="form_div">
+        <form action="{{url_for('output')}}" method="post" enctype="multipart/form-data">
+            <label for="img" id="img_label">Select image of the dog to be identified</label>
+            <input type="file" id="img" name="img" accept="image/*">
+            <div class="submit_btn_div">
+                <button type="submit" id="submit_btn">Submit</button>
+            </div>
+        </form>
+    </div> <!--form_div-->
+    <div class="imgg2">
+        <img  class="imgg3" src="/static/hark.jpg" alt="" >
+    
+        </div>
+    
+    <script>
+        var selDiv = "";
+        var storedFiles = [];
+        $(document).ready(function () {
+            $("#img").on("change", handleFileSelect);
+            selDiv = $("#selectedBanner");
+        });
+
+        function handleFileSelect(e) {
+            var files = e.target.files;
+            var filesArr = Array.prototype.slice.call(files);
+            filesArr.forEach(function (f) {
+                if (!f.type.match("image.*")) {
+                    return;
+                }
+                storedFiles.push(f);
+
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    var html =
+                        '<img src="' +
+                        e.target.result +
+                        "\" data-file='" +
+                        f.name +
+                        "alt='Category Image' height='200px' width='200px'>";
+                    selDiv.html(html);
+                };
+                reader.readAsDataURL(f);
+            });
+        }
+    </script>
+</body>
+
+</html>
